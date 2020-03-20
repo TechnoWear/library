@@ -55,14 +55,16 @@ $(document).on("click", ".updateModal", function(e) {
 		.val();
 	console.log(id);
 	$.ajax({
-		url: ruta + "index.php/Books/getBook",
+		url: ruta + "index.php/Users/getUser",
 		data: { id: id },
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
-			$(".modal-body").load("content.html", function() {
-				// $("#modalUpdate").modal({ show: true });
-			});
+			console.log(data);
+			var objeto_json = JSON.parse(data);
+
+			$("#name").val(objeto_json.name);
+			$("#email").val(objeto_json.email);
+			$("#id_modal").val(objeto_json.id);
 		},
 		error: function(error) {
 			console.log("error");

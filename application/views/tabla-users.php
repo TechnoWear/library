@@ -17,8 +17,8 @@
                 </td>
                 
                 <td>
-                <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
-                    update book<input value ="<?= trim($usuario['id']) ?>" type="hidden" class="id">
+                <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    update user<input value ="<?= trim($usuario['id']) ?>" type="hidden" class="id">
                 </button>
                     <button type="button" class="eliminar btn btn-primary">Delete
                     <input value ="<?= trim($usuario['id']) ?>" type="hidden" class="id"></button>

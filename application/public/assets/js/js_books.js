@@ -19,8 +19,11 @@ $(document).on("click", "#guardar", function(e) {
 		data: $("form").serialize(),
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
 			traerTabla();
+			$("#name").val("");
+			$("#author").val("");
+			$("#id_modal").val("");
+			alert(data);
 		},
 		error: function(error) {
 			console.log("error");
@@ -79,10 +82,12 @@ $(document).on("click", ".updateModal", function(e) {
 		data: { id: id },
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
-			$(".modal-body").load("content.html", function() {
-				// $("#modalUpdate").modal({ show: true });
-			});
+			console.log(data);
+			var objeto_json = JSON.parse(data);
+
+			$("#name").val(objeto_json.name);
+			$("#author").val(objeto_json.author);
+			$("#id_modal").val(objeto_json.id);
 		},
 		error: function(error) {
 			console.log("error");

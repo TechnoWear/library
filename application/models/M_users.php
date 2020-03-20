@@ -16,12 +16,13 @@ class M_users extends CI_MODEL {
         return $query->result_array();
     }
 
-    public function CNS_BookById() {
-        $this->db->select('B.id as id, B.name as name, B.author as author, B.category as category');
-        $this->db->from('book as B');
+    public function CNS_UserById($id) {
+        $this->db->select('U.id as id, U.name as name, U.email as email');
+        $this->db->from('user as U');
+        $this->db->where('U.id', $id);
         $query = $this->db->get();
 
-        return $query->result_array();
+        return $query->row();
     }
 
     public function getCategories() {
@@ -36,6 +37,13 @@ class M_users extends CI_MODEL {
         $this->db->insert('user', $data);
 
         return $this->db->insert_id();
+    }
+
+    public function UPD_User($data, $id) {
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
+
+        return $this->db->affected_rows();
     }
 
     public function DEL_User($id) {

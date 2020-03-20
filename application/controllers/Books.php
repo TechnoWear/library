@@ -58,6 +58,11 @@ class Books extends CI_Controller {
 			exit();
 		}
 
+		$id_modal = $this->input->post("id_modal");
+
+		// echo json_encode($_POST);
+		// exit();
+
 		// DATA A ENNVIAR
 		$data = array(
 			"name" => $this->input->post("name"),
@@ -66,13 +71,28 @@ class Books extends CI_Controller {
 			"published" => date('Y-m-d h:i:s'),
 			"user" => "0"
 		);
-		$response = $this->M_books->INS_Book($data);
 
-		if($response) {
-			echo json_encode("registro guardado");
+		if(is_numeric($id_modal)) {
+
+			$response = $this->M_books->UPD_Book($data, $id_modal);
+
+			if($response) {
+				echo json_encode("registro actualizado");
+			} else {
+				echo json_encode("error al actualizar");
+				exit();
+			}
+
 		} else {
-			echo json_encode("error");
-			exit();
+
+			$response = $this->M_books->INS_Book($data);
+
+			if($response) {
+				echo json_encode("registro guardado");
+			} else {
+				echo json_encode("error");
+				exit();
+			}
 		}
 	}
 
@@ -116,7 +136,7 @@ class Books extends CI_Controller {
 		if($response) {
 			echo json_encode($response);
 		} else {
-			echo json_encode("error");
+			echo json_encode("error al consultar el libro");
 			exit();
 		}
 	}

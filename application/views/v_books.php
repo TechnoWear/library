@@ -81,6 +81,7 @@ foreach($categories as $cat){
 			<?= form_input($author);?><br>
 			<?= form_label("Category:");?><br>
 			<?= form_dropdown($category,$options);?><br>
+			<input value="none" type="hidden" name="id_modal" id="id_modal">
 			<?= form_close();?><br>
 
       </div>
@@ -92,28 +93,6 @@ foreach($categories as $cat){
   </div>
 </div>
 
-<!-- MODAL UPDATE BOOK -->
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-	  <?= form_open("formUpdate");?><br>
-			
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button id="guardar" type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <!-- JS -->

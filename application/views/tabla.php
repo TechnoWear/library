@@ -40,7 +40,7 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#modalUpdate">
+                    <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         update book
                         <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id">
                     </button>

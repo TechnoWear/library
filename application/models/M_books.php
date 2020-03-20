@@ -18,12 +18,13 @@ class M_books extends CI_MODEL {
         return $query->result_array();
     }
 
-    public function CNS_BookById() {
+    public function CNS_BookById($id) {
         $this->db->select('B.id as id, B.name as name, B.author as author, B.category as category');
         $this->db->from('book as B');
+        $this->db->where('B.id', $id);
         $query = $this->db->get();
 
-        return $query->result_array();
+        return $query->row();
     }
 
     public function getCategories() {
@@ -38,6 +39,13 @@ class M_books extends CI_MODEL {
         $this->db->insert('book', $data);
 
         return $this->db->insert_id();
+    }
+
+    public function UPD_Book($data, $id) {
+        $this->db->where('id', $id);
+        $this->db->update('book', $data);
+
+        return $this->db->affected_rows();
     }
 
     public function DEL_Book($id) {
