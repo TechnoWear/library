@@ -32,6 +32,23 @@ $(document).on("click", "#guardar", function(e) {
 	});
 });
 
+$(document).on("click", "#guardar_user", function(e) {
+	console.log($("form").serialize());
+	$.ajax({
+		url: ruta + "index.php/Books/addUser",
+		data: $("form").serialize(),
+		type: "POST",
+		success: function(data, textStatus, jqXHR) {
+			alert(data);
+			traerTabla();
+		},
+		error: function(error) {
+			console.log("error");
+			console.log(error);
+		}
+	});
+});
+
 $(document).on("click", ".eliminar", function(e) {
 	var id = $(this)
 		.find(".id")
@@ -88,6 +105,7 @@ $(document).on("click", ".updateModal", function(e) {
 			$("#name").val(objeto_json.name);
 			$("#author").val(objeto_json.author);
 			$("#id_modal").val(objeto_json.id);
+			$("#id_modal_user").val(objeto_json.id);
 		},
 		error: function(error) {
 			console.log("error");

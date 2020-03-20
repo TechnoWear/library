@@ -24,6 +24,7 @@ class Books extends CI_Controller {
 	{
 		
 		$data['categories'] = $this->M_books->getCategories();
+		$data['users'] = $this->M_books->getUsers();
 		if($data) {
 			$this->load->view('v_books', $data);
 		} else {
@@ -94,6 +95,32 @@ class Books extends CI_Controller {
 				exit();
 			}
 		}
+	}
+
+	public function addUser() {
+		// echo json_encode($_POST);
+		// exit();
+
+		$id_modal = $this->input->post("id_modal_user");
+		$id_user = $this->input->post("user");
+
+		// echo json_encode($_POST);
+		// exit();
+
+		// DATA A ENNVIAR
+		$data = array(
+			"user" => $this->input->post("user")
+		);
+
+			$response = $this->M_books->UPD_Book($data, $id_modal);
+
+			if($response) {
+				echo json_encode("registro actualizado");
+			} else {
+				echo json_encode("error al actualizar");
+				exit();
+			}
+
 	}
 
 	public function deleteBook() {

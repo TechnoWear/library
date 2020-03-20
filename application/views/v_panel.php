@@ -19,7 +19,6 @@
 			<div class="row justify-content-center">
 				<a href="<?= base_url();?>index.php/Books" class="secciones col-12 col-md-4">Libros</a>
 				<a href="<?= base_url();?>index.php/Users" class="secciones col-12 col-md-4">Usuarios</a>
-				<a href="<?= base_url();?>index.php/loans" class="secciones col-12 col-md-4">Prestamos</a>
 			</div>
 		</div>
 	</div>

@@ -35,6 +35,14 @@ class M_books extends CI_MODEL {
         return $query->result_array();
     }
 
+    public function getUsers() {
+        $this->db->select('id, name');
+        $this->db->from('user');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function INS_Book($data) {
         $this->db->insert('book', $data);
 

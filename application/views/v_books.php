@@ -35,9 +35,21 @@ $category = array(
 	"class" => "form_control",
 	"required" => "true"
 );
+$user = array(
+	"name" => "user",
+	"id" => "user",
+	"class" => "form_control",
+	"required" => "true"
+);
 $options [] = [];
 foreach($categories as $cat){
 	$options[$cat['id']] = $cat["name"];
+
+}
+
+$options_us [] = [];
+foreach($users as $us){
+	$options_us[$us['id']] = $us["name"];
 
 }
 
@@ -88,6 +100,32 @@ foreach($categories as $cat){
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button id="guardar" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ADD USER -->
+<div class="modal fade" id="exampleModal_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sellect User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <?= form_open("form");?><br>
+			<?= form_label("User:");?><br>
+			<?= form_dropdown($user,$options_us);?><br>
+			<input value="none" type="hidden" name="id_modal_user" id="id_modal_user">
+			<?= form_close();?><br>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="guardar_user" type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

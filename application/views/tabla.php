@@ -23,19 +23,19 @@
                 </td>
                 <td>
                     <?php
-                        if($Libro['user'] == "0") {
-                            echo "vacante";
-                        } elseif($Libro['user'] == "1") {
+                        if($Libro['user'] != "0") {
                             echo "Ocuped";
+                        } else {
+                            echo "Vacante";
                         }
                     ?>
                 </td>
                 <td>
                     <?php
-                        if($Libro['user'] == "0") {
-                            echo "";
-                        } elseif($Libro['user'] == "1") {
+                        if($Libro['user'] != "0") {
                             echo $Libro['user_name'];
+                        } else {
+                            echo "";
                         }
                     ?>
                 </td>
@@ -52,8 +52,9 @@
                            <button type="button" class="delUs btn btn-primary">Delete User
                             <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id"></button>
                     <?php    } else {?>
-                            <button type="button" class="addUs btn btn-primary">Add User
-                                <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id"></button>
+                        <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal_user">
+                        Add User
+                        <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id">
                     <?php    }?>   
                     
                 </td>
