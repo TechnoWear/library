@@ -39,7 +39,7 @@ $email = array(
 		<div class="col-11 col-md-10">
 			<!-- BOTONES -->
 			<div class="row justify-content-center">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" class="btn btn-primary m-5" data-toggle="modal" data-target="#exampleModal">
 			New User
 			</button>
 			</div>

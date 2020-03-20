@@ -17,8 +17,8 @@
 	<div class="row justify-content-center">
 		<div class="col-11 col-md-10">
 			<div class="row justify-content-center">
-				<a href="<?= base_url();?>index.php/Books" class="secciones col-12 col-md-4">Libros</a>
-				<a href="<?= base_url();?>index.php/Users" class="secciones col-12 col-md-4">Usuarios</a>
+				<a href="<?= base_url();?>index.php/Books" class="btn btn-primary m-5 col-12 col-md-4">Libros</a>
+				<a href="<?= base_url();?>index.php/Users" class="btn btn-primary m-5 col-12 col-md-4">Usuarios</a>
 			</div>
 		</div>
 	</div>

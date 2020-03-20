@@ -17,10 +17,10 @@
                 </td>
                 
                 <td>
-                <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="updateModal btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                     update user<input value ="<?= trim($usuario['id']) ?>" type="hidden" class="id">
                 </button>
-                    <button type="button" class="eliminar btn btn-primary">Delete
+                    <button type="button" class="eliminar btn btn-danger">Delete
                     <input value ="<?= trim($usuario['id']) ?>" type="hidden" class="id"></button>
                 </td>
             </tr>

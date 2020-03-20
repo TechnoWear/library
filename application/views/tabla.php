@@ -40,19 +40,19 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="updateModal btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                         update book
                         <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id">
                     </button>
-                    <button type="button" class="eliminar btn btn-primary">Delete
+                    <button type="button" class="eliminar btn btn-danger">Delete
                     <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id"></button>
                     
                     <?php
                         if($Libro['user'] != "0") {?>
-                           <button type="button" class="delUs btn btn-primary">Delete User
+                           <button type="button" class="delUs btn btn-danger">Delete User
                             <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id"></button>
                     <?php    } else {?>
-                        <button type="button" class="updateModal btn btn-primary" data-toggle="modal" data-target="#exampleModal_user">
+                        <button type="button" class="updateModal btn btn-success" data-toggle="modal" data-target="#exampleModal_user">
                         Add User
                         <input value ="<?= trim($Libro['id']) ?>" type="hidden" class="id">
                     <?php    }?>   
