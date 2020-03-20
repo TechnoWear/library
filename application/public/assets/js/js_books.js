@@ -39,8 +39,11 @@ $(document).on("click", "#guardar_user", function(e) {
 		data: $("form").serialize(),
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
 			traerTabla();
+			$("#name").val("");
+			$("#author").val("");
+			$("#id_modal").val("");
+			alert(data);
 		},
 		error: function(error) {
 			console.log("error");

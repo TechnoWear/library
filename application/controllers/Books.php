@@ -22,8 +22,10 @@ class Books extends CI_Controller {
 
 	public function index()
 	{
-		
+
+		// OBTIENE LAS CATEGORIAS DE LOS LIBROS PARA PODER ASIGNARSELA
 		$data['categories'] = $this->M_books->getCategories();
+		// OBTIENE LOS USARIOS REGISTRADOS PARA PODER ASIGNARLES LIBROS
 		$data['users'] = $this->M_books->getUsers();
 		if($data) {
 			$this->load->view('v_books', $data);
@@ -34,9 +36,12 @@ class Books extends CI_Controller {
 	}
 
 	public function tabla() {
+
+		// OBTIENE LA DATA DE LOS LIBROS PARA LLENAR LA TABLA
 		$data['data'] = $this->M_books->getBooks();
 
 		if($data) {
+			// SE ENVIA LA DATA A LA TABLA
 			$this->load->view('tabla', $data);
 		} else {
 			echo json_encode("error al cargar los libros");
@@ -45,24 +50,23 @@ class Books extends CI_Controller {
 
 	}
 
+	// FUNCION QUE REALIZA EL INSERT O UPDATE SEGUN SEA EL CASO
 	public function saveBook() {
-		// echo json_encode($_POST);
-		// exit();
-
+	
+		// REGLAS PARA VALIDAR
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		$this->form_validation->set_rules('author', 'Autor', 'required|trim');
 		$this->form_validation->set_rules('category', 'Category', 'required|trim');
 		
 
 		if ($this->form_validation->run() == FALSE) {
+			// SI UNA REGLA NO SE CUMPLE RETORNA EL ERROR
 			echo json_encode(validation_errors());
 			exit();
 		}
 
+		// RECIBE EL ID DEL LIBRO ÁRA SABER SI PROCEDE A INSERT O UPDATE
 		$id_modal = $this->input->post("id_modal");
-
-		// echo json_encode($_POST);
-		// exit();
 
 		// DATA A ENNVIAR
 		$data = array(
@@ -73,6 +77,7 @@ class Books extends CI_Controller {
 			"user" => "0"
 		);
 
+		// SI EL ID_MODAL(ID DEL LIBRO) RECIBE EL NUMERO PROCEDE A REALIZAR UPDATE
 		if(is_numeric($id_modal)) {
 
 			$response = $this->M_books->UPD_Book($data, $id_modal);
@@ -83,7 +88,7 @@ class Books extends CI_Controller {
 				echo json_encode("error al actualizar");
 				exit();
 			}
-
+		// DE NO RECIBIR UN NUMERO DE LIBRO PROCEDE A REALIZAR UN INSERT
 		} else {
 
 			$response = $this->M_books->INS_Book($data);
@@ -98,14 +103,11 @@ class Books extends CI_Controller {
 	}
 
 	public function addUser() {
-		// echo json_encode($_POST);
-		// exit();
 
+		// RECIBE EL ID DEL LIBRO PARA ANEXARLE UN PRESTAMO AL USUARIO
 		$id_modal = $this->input->post("id_modal_user");
+		// RECIBE EL ID DEL USUARIO AL CUAL SE LE VA A REALIZAR EL PRESTAMO
 		$id_user = $this->input->post("user");
-
-		// echo json_encode($_POST);
-		// exit();
 
 		// DATA A ENNVIAR
 		$data = array(
@@ -124,11 +126,11 @@ class Books extends CI_Controller {
 	}
 
 	public function deleteBook() {
-		// echo json_encode($_POST);
-		// exit();
 
+		// RECIBE EL ID DEL LIBRO PARA ELIMINARLO
 		$id = $this->input->post("id");
 
+		// ENVIA EL ID A LA FUNCION ENCARGADA DE ILIMINAR EL LIBRO
 		$response = $this->M_books->DEL_Book($id);
 
 		if($response) {
@@ -140,9 +142,8 @@ class Books extends CI_Controller {
 	}
 
 	public function deleteUserOfBook() {
-		// echo json_encode($_POST);
-		// exit();
 
+		// RECIBE EL ID DEL LIBO PARA RETIRARLE EL USUARIO REGISTRADO AL QUE SE LE HIZO EL PRESTAMO
 		$id = $this->input->post("id");
 
 		$response = $this->M_books->DEL_UserOfBook($id);
@@ -155,6 +156,7 @@ class Books extends CI_Controller {
 		}
 	}
 
+	// FUNCION QUE CONSULTA UN LIBRO POR SU ID PARA LLENAR EL MODAL DE ACTUALIZACION
 	public function getBook() {
 		$id = $this->input->post("id");
 
