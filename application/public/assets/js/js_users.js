@@ -19,11 +19,25 @@ $(document).on("click", "#guardar", function(e) {
 		data: $("form").serialize(),
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
+			// alert(data);
+			Swal.fire({
+				icon: "success",
+				title: data,
+				showConfirmButton: false,
+				position: "center",
+				timer: 2000
+			});
 			traerTabla();
 		},
 		error: function(error) {
-			console.log("error");
+			// console.log("error");
+			Swal.fire({
+				icon: "error",
+				title: data,
+				showConfirmButton: false,
+				position: "center",
+				timer: 2000
+			});
 			console.log(error);
 		}
 	});
@@ -39,11 +53,25 @@ $(document).on("click", ".eliminar", function(e) {
 		data: { id: id },
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			alert(data);
+			// alert(data);
+			Swal.fire({
+				icon: "success",
+				title: data,
+				showConfirmButton: false,
+				position: "center",
+				timer: 2000
+			});
 			traerTabla();
 		},
 		error: function(error) {
-			console.log("error");
+			// console.log("error");
+			Swal.fire({
+				icon: "error",
+				title: data,
+				showConfirmButton: false,
+				position: "center",
+				timer: 2000
+			});
 			console.log(error);
 		}
 	});
@@ -59,7 +87,6 @@ $(document).on("click", ".updateModal", function(e) {
 		data: { id: id },
 		type: "POST",
 		success: function(data, textStatus, jqXHR) {
-			console.log(data);
 			var objeto_json = JSON.parse(data);
 
 			$("#name").val(objeto_json.name);
